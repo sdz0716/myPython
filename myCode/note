@@ -1,0 +1,1792 @@
+问题？如何循环print输出只显示最新输出的行
+
+
+bytearray(b'test_central_1').decode()        #bytearray,即字节数组转换为str
+    out:test_central_1
+
+datetime.datetime.now().strftime('%y%m%d%H%M%S')        #将当前时间按照要求格式化
+    out:20161206174715
+
+linux下python3的mysql模块为mysql-connector
+linux下安装pip3，包名为python34u-pip（python3.4版本），需要ius源
+
+request获取的内容有乱码，如‘<li>±¾Õ¾Êý¾Ý£ºÌì½òÊÐÌì½òÊÐ  µçÐÅ</li>’
+res.text.encode('latin1').decode('gbk')     #中文乱码转码
+
+sys.path.append()       #导入非sys.path下的自定义模块方法，先添加该模块所在目录后，再import
+
+str.rjust(10, ' ') str.ljust(20, '*') str.center()        #各种对齐
+
+#set去重
+l = ['21.238.123.178', '21.238.123.178','21.238.123.17']
+set(l)
+Out[132]:
+{'21.238.123.17', '21.238.123.178'}
+list(set(l))
+Out[133]:
+['21.238.123.178', '21.238.123.17']
+
+idTimeListCathe = sorted(idTimeListCathe, key=lambda x: x[3])       #以列表中的列表的第三个元素排序
+
+str.strip('\n')     #去除换行符
+str.replace('\n', ' ')      #换行符替换为空格
+
+os.mkdir        #只建立目标目录，中间目录不建立，如中间目录不存在则报错
+os.makedirs     #会建立中继目录，最好配合参数exis_ok=True使用，防止目的目录已存在造成问题
+
+pip无法安装，可尝试easy_install pyzmail
+
+print('\b' * len(positionStr), end='', flush=True)      #'\b'打印退格，需要配合flush=True使用。但问题是，由于退格太快，导致无法看到上一行print的内容。待解决。
+
+
+列表推导式
+[x*x for x in range(10) if x%3==0]
+
+#二分查找法
+def search(sequence,number,lower,upper):
+    if lower == upper:
+        assert number == sequence[upper]
+        return upper
+    else:
+        middle = (lower + upper)//2
+        if number > sequence[middle]:
+            return search(sequence,number,middle+1,upper)
+        else:
+            return search(sequence,number,lower,middle)
+
+
+if __name__ == '__main__'
+所有的模块都有一个内置属性 __name__。一个模块的 __name__ 的值取决于您如何应用模块。如果 import 一个模块，那么模块__name__ 的值通常为模块文件名，不带路径或者文件扩展名。但是您也可以像一个标准的程序样直接运行模块，在这 种情况下, __name__ 的值将是一个特别缺省"__main__"。
+在cmd 中直接运行.py文件,则__name__的值是'__main__';
+而在import 一个.py文件后,__name__的值就不是'__main__'了;
+从而用if __name__ == '__main__'来判断是否是在直接运行该.py文件.
+#Test.py
+
+class Test:
+
+    def __init(self):pass
+    def f(self):print 'Hello, World!'
+if __name__ == '__main__':      #为True则说明将此模块当做程序直接使用了，而不是import
+    Test().f()
+
+
+【ACT4】
+L[1]
+L[0]
+L[-1]
+L[0:-1]    #正向取值.右边的值必须比左边的晚出现。左边的包括在范围内的，右边的不包括。
+L[0:10:2]       #步长为2。
+L[10:0:-2]      #可以为负数，则从右向左提取元素。左边的值需要比右边的值出现的晚。
+L[:10:-2]       #没明确指定的，会自动匹配正确的开始顺序。
+L[1][2]
+len(L)
+L[1] = value
+L1 + L2     #同类型的列表才能相加。合并为一个大列表。
+L * 3
+del L[1]
+L.remove(value)
+L.pop()     #移除列表最后一个元素
+range(len(L))
+    for i in range(len(L))
+        print(str(i),L[i])
+L[1,2,3]
+    A,B,C = L
+max(L)
+    out:3
+min(L)
+    out:1
+L.index()  #返回所找值的下标，第一个出现的
+['aa', 'bb', 'bb'].count('bb')      #统计出现次数
+    out:2
+L.append()
+L.extend()      #追加一个列表
+L.insert(3, 'dd')       #在列表的L[3]位置插入'dd'
+L.reverse()     #使列表反向排列
+L.sort()    #方法无返回值，print（L.sort())为None
+sorted()    #会返回一个新的已经排好序的 list
+#通过sorted()对list内的list中的某元素排序
+    a = [['c',2],['b',4],['a',3],['d',1]]
+    print(sorted(a))
+        [['a', 3], ['b', 4], ['c', 2], ['d', 1]]
+    print(sorted(a, key=lambda x:x[1]))
+        [['d', 1], ['c', 2], ['a', 3], ['b', 4]]
+    x = ['aa', 'a', 'aaaa', 'aaa']
+    x.sort(key=len)     #通过len()排序.如果加上reverse=True，则倒序
+        out:['a', 'aa', 'aaa', 'aaaa']
+print(L[random.randict(0,len(L)-1)])
+('hello',)    #有',',是tuple，无','，是str
+L1=[1，2，3]
+    L2 = L1
+    L2[1] = 5
+    L2 = [1，5，3]
+    L1 = [1，5, 3]   #变量包含对列表值的引用，而不是列标值本身。但对于字符串和整数值，变量就包含了字符串或整数值。
+    L3 = copy.copy(L1)    #修改L3列表值不会影响L1
+copy.copy() & copy.deepcopy()
+    import copy
+    # copy 和 deepcopy 的区别
+    l1 = [1, 2, 3, ['a', 'b']]
+    # copy 浅复制，不会拷贝其子对象，修改子对象，将受影响
+    l2 = copy.copy(l1)
+    # deepcopy 深复制，将拷贝其子对象，修改子对象，将不受影响
+    l3 = copy.deepcopy(l1)
+    l1[3].append('c')
+    print 'l1:', l1
+    print 'l2:', l2
+    print 'l3:', l3
+    output:
+    l1: [1, 2, 3, ['a', 'b', 'c']]
+    l2: [1, 2, 3, ['a', 'b', 'c']]
+    l3: [1, 2, 3, ['a', 'b']]
+
+
+【ACT5】
+dict = {'a': 'A', 'b': 'B'}
+#用例：
+dict.pop('a')
+    out:'A'
+dict
+    out:{'b':'B'}
+if 'a' in dict:
+    print(1)
+        out:1
+dict.values()
+dict.keys()
+    dict_keys(['b', 'a'])
+dict.items()
+    dict_items([('b', 'B'), ('a', 'A')])
+for k,y in dict.items():
+    print(key,v)
+    output:b,B
+           a,A
+dict.get('a',0)
+    'A'
+dict.get('1',0)
+    0
+dict.setdefault(key, default=None)      #如果键不已经存在于字典中，将会添加键并将值设为默认值
+    >>> a={}
+    >>> a['key']='123'
+    >>> print (a)
+    {'key': '123'}
+    >>> print (a.setdefault('key','456'))  #显示a这个字典的'key'值的内容,因为字典有，所以不会去设置它
+    123
+
+    >>> print (a.setdefault('key1','456')) #显示a这个字典的'key1'值的内容，因为字典没有，所以设置为456了
+    456
+    >>> a
+    {'key1': '456', 'key': '123'}
+pprint    #漂亮输出，默认换行，并排序
+print(pprint.pformat(dict))
+    out:
+         {'WA': {'Adams': {'pop': 18728, 'tracts': 5},
+                'Asotin': {'pop': 21623, 'tracts': 6}},
+          'WI': {'Adams': {'pop': 20875, 'tracts': 7},
+                'Ashland': {'pop': 16157, 'tracts': 7}}}
+
+
+【ACT6】
+l = 'Helloword'
+    l[1:5]
+    output:'ello'
+for i in l:
+if hello (not)in l:
+l.lower()
+l.upper()    #不改变l本身，如要改变l，需要 l = l.upper，此类方法均如是
+l.isupper()    #有一个大写字母即为True
+    True
+l.islower()    #有一个小写字母即为True
+    True
+l.isalpha()
+l.isalnum()
+l.isdecimal()
+l.isspace()
+l.istitle()
+l.startswith('Hello')
+    output:True
+l.endswith('world')
+    output:True
+'!'.join(['a','b','c'])    #列表合成为字符串
+    output:'a!b!c'
+'!'.john('hello world haha'.split())
+    hello!world!haha    #没有split为h!e!l!l!o! !w!...
+l.split('e')
+    out:['h', 'lloworld']    #字符串拆分成列表
+l.rjust(11)    #因为l本身为10个字符，所以需最小11才能空1位
+    out:' helloworld'
+l.ljust(12,'*')
+    out:'helloworld**'
+l.center(11)
+    out:' helloworld'
+l.center(12,'=')
+    out:'=helloworld='
+l.strip()   #只删除字符串收尾两端外的空格，例如' hello world '，中间空格保留
+l.lstrip()
+l.rstrip()
+
+pyperclip    #复制粘贴模块
+pyperclip.copy('hello')  #处理字符串
+pyperclip.paste()
+创建bat批处理工具
+    新建文本文件，输入
+    @py.exe C:文件路径 %*
+    @pause
+    保存为.bat文件，放到C:\windows下，直接WIN+R中运行py文件名即可
+
+
+【ACT7】--正则
+print(r'\n')  #r代表禁止字符串转译
+import re
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.search('my number is 425-222-2222')
+print(mo.group())
+
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')
+mo = phoneNumRegex.search('my number is 425-222-2222')      #只返回先检索到的
+
+#phoneNumRegex.search('my number is 425-222-2222')等价于re.search(phoneNumRegex, 'my number is 425-222-2222')
+
+print(mo.group(0))
+    out:425-222-2222
+print(mo.group(1))
+    out:425
+mo.group(2)或3,out:222或2222
+mo.groups()
+    out:('425','222','2222')
+a,b,c = mo.groups()
+    print(a)
+        out:425
+    print(b)
+        out:222
+'A|B'  'B LLL A' out:B    #输出先检索到的
+serach()    #只返回先检索到的
+findall()    #返回所有检索到的，且返回一个列表
+match()     #只匹配开头部分的字符串
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.findall('my number is 425-222-2222 and 111-222-3333')
+print(mo)
+    ['425-222-2222', '111-222-3333']
+
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')    #有分组
+mo = phoneNumRegex.search('my number is 425-222-2222 and 111-222-3333')
+print(mo.findall())
+    out:[('425','222','2222'),('111','222','3333')]
+
+A(B|C)  'AC LLL B' out:AC且group(1) out:C
+A(B)?C  'AC LLL B' out:AC  'ABC LLL B' out:ABC  #()?表示()内内容出现了0次或1次
+    （）*  #*代表出现0次或多次
+    （）+  #+代表匹配1次或多次
+    （）{n,m}  #{}表示出现特定n次，或n到m次，例如{3}为3次，{3,5}为3到5次，{3，}为3次或以上，{,5}为0到5次
+
+greedyHaRegex = re.compile(r'(Ha){3,5}')
+mo = greedyHaRegex.search('HaHaHaHaHa')
+print(mo.group())
+    out:HaHaHaHaHa    #贪心匹配
+greedyHaRegex = re.compile(r'(Ha){3,5}?')
+mo = greedyHaRegex.search('HaHaHaHaHa')
+print(mo.group())
+    out:HaHaHa    #{}后加?，即为非贪心匹配，匹配花括号内最小值
+
+\d  数字
+\D  数字以外所有
+\w  字母，数字，下划线
+\W  除字母，数字，下划线以外，所有
+\s  空格，制表符，回车
+\S  除空格，制表符，回车之外所有
+
+[aeiouAEIOU]    #括号内元素为或的关系
+[^aeiouAEIOU]    #字符分类中的^符号代表  非
+^aeiou$    #以aeiou开始且结束，绝对匹配，子集不符合规则
+.    #通配符，匹配除换行之外的任意字符
+.*    #匹配任意次任意字符，除换行外
+
+(r'.*',re.DOTALL)  #句点.可匹配换行符，即\n,没有re.DOTALL时，'.*'只匹配到换行符之前
+(r'ab',re.I)    #不区分大小写
+
+names = re.compile(r'Agent \w+')
+names.sub('censored','Agent Alice gave ...')    #sub()为替换
+    out:'censored gave ...'
+names = re.compile(r'Agent (\w)\w*')
+names.sub(r'\1****','Agent Alice gave ...')    #\1代表group(1)的输出，及(\w)代表的Alice的A
+    out:'A**** gave ...'
+
+re.split('[, ]+', 'aa, bb...cc dd')
+    out:['aa', 'bb', 'cc', 'dd']        #用于通过正则表达式对字符串进行分割，返回列表。还可加入maxsplit参数指定分割次数
+
+
+【ACT 8】--文件系统操作
+os.path.join('usr', 'bin', 'spam')
+    out:'usr\\bin\\spam'
+os.getcwd()     #查看当前工作路径
+os.chdir('C:\\Window\\System32')        #改变当前工作路径
+os.makedirs('C:\\aa\\bb\\cc')       #创建文件夹,如果没有aa,bb也会创建aa和bb文件夹
+os.path.abspath('path')     #将相对路径转换为绝对路径
+os.path.isabs('path')       #如果是绝对路径返回True，是相对路径返回False
+os.path.relpath(path,start)     #返回start开始到path的相对路径字符串，如无start，则从当前路径开始
+    os.path.relpath('C\\Windows', 'C:\\spam\\eggs')
+        out:'..\\..\\Windows'
+os.path.dirname('C:\\AA\\BB\\CC')       #取目录名称
+    out:'C:\\AA\\BB'
+os.path.basename('C:\\AA\\BB\\CC')      #取文件名称
+    out:'CC'
+os.path.split('C:\\AA\\BB\\CC')     #同时取目录名和文件名,返回一个元组
+    out:('C:\\AA\\BB', 'CC')
+('C:\\AA\\BB\\CC').split(os.path.sep)       #输出每个路径字符串列表
+    out:['C:', 'AA', 'BB', 'CC']
+os.path.getsize(path)       #输出路径下文件的字节数
+os.listdir(path)        #输出路径下文件名列表
+os.path.exists(path)        #文件或文件夹存在，返回True
+os.path.isfile(path)        #path参数存在且为文件，返回True
+os.path.isdir(path)     #path参数存在且为文件夹，返回True
+helo = open('C:\\Users\\daize\\Desktop\\test.txt')      #open()返回一个file对象,默认为'r'
+helo.read()     #读取helo中内容
+helo.readlines()    #将helo内容取出得到一个字符串列表，每个字符串为helo中一行
+
+helo = open('C:\\Users\\daize\\Desktop\\test.txt', 'w')
+helo.write('haha')
+helo.close()
+helo = open('C:\\Users\\daize\\Desktop\\test.txt', 'a')
+helo.write('haha')
+helo.close()
+#'w'为清空文件并写入，'a'为不清空文件且添加内容。如对应路径文件不存在，会主动创建。在读取或写入后需要close()，然后才能再次打开。
+#write()方法不会像print()方法一样自动添加换行符(\n)，需要手动添加。
+
+shelve      #例如可以保存配置，在此打开程序时加载这些配置
+import shelve
+shelfFile = shelve.open('mydata')       #定义的shelFile类似字典
+cats = ['a', 'b', 'c']      #创建cats列表
+shelfFile['cats'] = cats        #创建cats键，值为cats列表，即生成一个字典
+shelfFile.close()
+shelfFile = shelve.open('mydata')       #打开mydata，shelve默认可读可写
+shelfFile['cats']
+    out:['a', 'b', 'c']
+shelfFile.close()
+#是生成真正列表形式
+shelfFile = shelve.open('mydata')
+list(shelfFile.keys())
+    out:['cats']
+list(shelfFile.values())
+    out:[['a', 'b', 'c']]
+shelfFile.close()
+
+pprint.pformat()        #可保存变量
+
+
+【ACT9】
+import shutil       #在python程序中复制，移动，改名和删除文件
+shutil.copy(source,destinasion)     #复制文件，从source到destinasion，sor和des均为字符串，des如为文件名，则为复制后的新名字
+    shutil.copy('C:\\Windows\\aa', 'D:\\B')     #B为文件夹
+        out:'D:\\B\\aa
+    shutil.copy('C:\\Windows\\aa', 'D:\\bb')        #bb为文件名
+        out:'D:\\bb
+shuttil.copytree(source,destinasion)        #复制整个文件夹及包括的文件夹和文件，用法同shutil.copy()
+    shutil.copytree('C:\\AA', 'C:\\AA_BAK')
+        out:'C:\\AA_BAK'
+
+shutil.move(source,destinasion)     #剪切，des为文件夹，直接放到该文件夹下；des为文件名，放到目标目录下并改为des名，如同名，直接覆盖
+
+os.unlink(path)     #删除path处的文件
+os.rmdir(path)      #删除path处的文件夹，且必须为空文件夹
+shutil.rmtree(path)     #删除path处文件夹及其下所有文件夹和文件
+
+import send2trash       #删除文件发送到回收站，而非永久删除
+
+os.walk()       #遍历目录树
+for foldername, subfolders, filenames in os.walk('c:\\Windows'）
+    print('current folder:' + foldername)
+    for subfolder in subfolders:
+        print(foldername,subfolder)
+    for filename in filenames:
+        print(foldername,filename)
+out:current folder A
+    subfolder A1
+    subfolder A2
+    filename a
+
+    current folder A1
+    subfolder A1-1
+    aubfolder A1-2
+    filename aa
+
+    current folder A2
+    xxxxxxxxx
+
+    current folder A1-1
+    xxxxxxxxx
+
+for folders, subfolders, files in os.walk('.'):
+    for file in files:
+        fileReal = os.path.join(folders ,file)
+        pdfNew = open(fileReal, 'rb')       #13章finalpdf.py
+
+import zipfile      #查看压缩文件信息
+exampleZip = zipfile.ZipFile('example.zip')     #打开zip文件传递给变量，如open()
+exampleZip.namelist()       #返回zip包里的文件名的字符串列表
+    out:['a.txt', 'A/']
+aInfo = exampleZip.getinfo('a.txt')     #讲zip包内的文件信息传递给aInfo变量
+aInfo.file_size     #字节数
+    out:111
+aInfo.compress_size     #压缩后的字节数
+    out:22
+round(aInfo.file_size / aInfo.compress_size, 2)     #压缩比，四舍五入至第二位
+exampleZip.close()
+
+import zipfile      #解压缩
+exampleZip = zipfile.ZipFile('example.zip')
+exampleZip.extractall(path)     #解压缩包内所有文件至path，如path中文件夹不存在，则创建。没有path参数，默认解压到当前目录
+exampleZip.extract('a.txt', 'C:\\A')        #解压包内文件a.txt至C:\A目录下,返回值为解压后文件的绝对路径
+    out:'C:\\A\\a.txt'
+exampleZip.close()
+
+import zipfile      #创建和添加到zip文件
+newZip = zipfile.ZipFile('new.zip', 'w')        #如已有new.zip，则w会擦除原有文件
+newZip = zipfile.ZipFile('new.zip', 'a')        #如已有new.zip，则a会添加新内容到原有文件
+newZip.write('a.txt', compress_type=zipfile.ZIP_DEFAULTED)
+newZip.close()
+
+
+【ACT10】
+raise Excention('haha')     #报错时输出的内容
+
+assert      #断言
+a = 1
+assert a == 1, 'correct'
+a = 2
+assert a == 1, 'incorrect'
+    out:AssertionError: incorrect
+运行带有断言的程序时，加 -O 参数，可不执行断言内容
+
+logging     #模块
+结合例子factorialLog.py
+import logging
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
+logging.debug('Start of program')
+logging.error('End of program')
+DEBUG INFO WARNING ERROR CRITICAL       #级别,basicConfig的level参数可控制界别
+logging.disable(logging.CRITICAL)       #禁用某级别（及以下级别）的日志
+logging.basicConfig(filename='my.txt'       #filename参数将日志保存到文件
+
+
+【ACT11】--web
+import webbrowser
+webbrowser.open('https://abc.efg.com')      #浏览器中打开页面
+
+import requests
+res = requests.get('http://www.gutenberg.org/cache/epub/1112/pg1112.txt')
+print(res.text[:200])
+    out:文本内容
+res.status_code
+    out:200
+res.raise_for_status()
+    out:如果url错误，会返回错误信息
+lmo = open('C:\\Users\\daize\\Desktop\\lmo.txt', 'wb')
+for chunk in res.iter_content(100000):
+    lmo.write(chunk)        #将下载的文件写入，原始的相应内容，一般可用下述的 content
+
+mo = open('C:\\Users\\daize\\Desktop\\mo.txt', 'w',encoding='utf-8')
+mo.write(res.text)
+mo.close()      #也可以写入文件
+
+下载及保存文件过程：
+1，requests.get()下载文件
+2，用'wb'调用open()，以二进制方式打开新文件
+3，使用Respose对象的iter_content()方法做循环
+4，每次迭代中调用write()，讲内容写入文件
+5，调用close()关闭文件
+
+requests.get(urldown).content       #可获取二进制相应内容，如图片、文件
+requests.get(urldown).text      #可获取Unicode型的数据，如文本
+
+import bs4
+res = requests.get('http://www.baidu.com')
+Soup = bs4.BeautifulSoup(res.text)      #创建BeautifulSoup对象1
+
+res = open('example.html')
+soup = bs4.BeautifulSoup(res)       #创建BeautifulSoup对象2
+
+file = open('example.html')
+soup = bs4.BeautifulSoup(file.read())
+
+soup.select()用法：
+soup.select('div')      #所有名为<div>的元素
+soup.select('.notice')      #所有使用CSS class属性名为notice的元素
+elems = soup.select('#author')      #带有id属性为author的元素
+soup.select('div span')     #所有在<div>元素之内的<span>元素
+soup.select('div>span')     #所有直接在<div>元素之内的<span>元素，中间没有其他元素
+soup.select('input[name]')      #所有名为<input>，并有一个name属性，其值无所谓的元素
+soup.select('input[type="button"]')     #所有名为<input>,并有一个type属性，其值为button的元素
+urlSub = soup.select('a[href]')[-1].get('href')     #从<a href='/comiclist/857/15820/1.htm'><img src='/images/t.gif' border='0' width='52' height='19'></a>筛选出‘/comiclist/857/15820/1.htm’ ,href是a标签的特定属性
+elem = elem[0]
+elem.get('id')
+    out:anthor      #get可获得属性值，每种标签都有特定的属性，可以直接使用。
+type(elems)
+    out:list
+len(elems)
+    out:1
+type(elems[0])
+    out:bs4.element.Tag
+elems[0].getText()      #如<div>hello world</div>,使用.getText()获得'hello world'
+    out:'Al Sweigart'
+print(elems[0])
+    out:<span id="author">Al Sweigart</span>
+str(elems[0])
+    out:'<span id="author">Al Sweigart</span>'
+elems[0].attrs      #返回字典，级将Tag对象的所有属性保存到elems[0]中
+    out:{'id': 'author'}
+
+from selenium import webdriver
+browser = webdriver.Firefox()       #打开浏览器。如报错需要下载（ttps://github.com/mozilla/geckodriver/releases）并将geckodriver.exe放到C:\python3.5\下。再报二进制相关错误，需要将FireFox(如"C:\Program Files (x86)\Mozilla Firefox")放入环境变量后，重启python环境。
+browser.get('http://www.baidu.com')     #打开url
+
+webdriver用于在页面中查找元素
+browser.find_element_*      #返回页面中查询到的第一个元素，且为webelement对象
+browser.find_elements_*     #返回一个列表，为页面中查询到的所有元素
+
+browser.find_element_by_class_name('name')      #使用CSS类name的元素
+browser.find_element_by_css_selector('selector')        #匹配CSS selector的元素
+browser.find_element_by_id('id')        #匹配id属性值的元素
+browser.find_element_by_link_text('text')     #完全匹配提供的text的<a>元素
+browser.find_element_by_partial_link_text('text')       #包含提供的text的<a>元素
+browser.find_element_by_name('name')        #匹配name的属性值的元素
+browser.find_element_by_tag_name('name')        #匹配标签name的元素
+如无匹配内容，则会报错，可用try...except防止异常崩溃
+
+通过上述方法获得元素后，可以通过下列方法或属性获得详细信息
+tag_name        #标签名，例如'a'表示<a>元素
+get_attribute('name')       #该元素name属性的值
+text        #该元素内的文本，例如<span>hello</span>中的'hello'
+clear       #对于文本字段或文本区域元素，清除其中输入的文本
+is_displayed()      #如果该元素可见，返回True，否则返回False
+is_enabled()        #对于输入元素，如果该元素启用，返回True，否则返回False
+is_selected()       #对于复选框或单选框元素，如果该元素被选中，选择True，否则返回False
+location        #一个字典，包含键'x'和'y'，表示该元素在页面上的位置
+
+try:
+    elem = browser.find.element_by_class_name('wrapper_1')
+    print(elem.tag_name)
+except:
+    print('error')
+        out:'div'
+
+点击页面
+linkElem = browser.find_element_by_link_text('新闻')
+linkElem.click()        #在当前页面弹出上面获得的url
+
+填写提交表单
+from selenium import webdriver
+browser = webdriver.Firefox()
+browser.get('http://www.baidu.com')
+user = browser.find_element_by_id('TANGRAM__PSP_8__userName')       #填写用户名的html语句中查知填写账户输入栏的id，下password同
+user.send_keys('sdz0716')       #填写账号
+password = browser.find_element_by_id('TANGRAM__PSP_8__password')
+password.send_keys('password')
+password.submit()       #点击提交。百度此时会提示填写验证码，所以提交失败
+
+发送特殊键（模拟键盘键）
+模块名为selenium.webdriver.common.keys
+可以在导入时直接from selenium.webdriver.common.keys import Keys,使用时直接写Keys即可
+需要通过.send_keys()使用，如Elem.send_keys(Keys.END)
+Keys.DOWN,Keys.UP,Keys.LEFT,Keys.RIGHT      #键盘箭头键
+Keys.ENTER,Keys.RETURN      #回车和换行
+Keys.HOME,Keys.END,Keys.PAGE_DOWN,Keys.PAGE_UP      #Home键、End键、PageUp键和PageDown键
+Keys.ESCAPE,Keys.BACK_SAPCE,Keys.DELETE     #Esc、Backspace和(字母)?or(删除)？键
+Keys.F1，Keys.F2...Keys.F12      #键盘顶部的F1~F12键
+Keys.TAB        #Tab键
+
+eg.
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+browser = webdriver.Firefox()
+browser.get('HTTP://NOSTARCH.COM')
+html = browser.find_element_by_tag_name('body')
+html.send_keys(Keys.END)        #页面跳至body标签内容的尾部
+html.send_keys(Keys.HOME)       #页面跳至body标签内容的首部
+
+点击浏览器按钮
+browser.back()      #返回
+browser.forward()       #前进
+browser.refresh()       #刷新
+browser.quit()      #关闭窗口
+
+
+【ACT12】 - excel
+import openpyxl
+wb = openpyxl.load_workbook('C:\\Users\\daize\\Desktop\\CSAIR.xlsx')        #打开一个excel工作簿，类似于open打开一个file
+wb.get_sheet_names()        #显示sheet名
+    out:['Sheet1', 'Sheet2', 'Sheet3']
+sheet = wb.get_sheet_by_name('Sheet3')
+sheet
+    out:<Worksheet "Sheet3">
+otherSheet = wb.get_active_sheet()      #获取活动表，级当前工作表
+otherSheet
+    out:<Worksheet "Sheet1">
+otherSheet.title        #
+    out:'Sheet1'
+sheet.title
+    out:'Sheet3'
+
+#从列表中取得单元格，以excel标准的字母+数字方式表示单元格
+sheet = wb.get_active_sheet()
+sheet
+    out:<Worksheet "Sheet1">
+sheet['A1']
+    out:<Cell Sheet1.A1>
+sheet['A1'].value       #单元格的值
+    out:'航班'
+sheet['A1'].row     #所在位置，行
+    out:1
+sheet['A1'].column      #所在位置，列
+    out:'A'
+sheet['A1'].coordinate      #所在位置，单元格
+    out:'A1'
+
+#使用数字表示行列
+sheet.cell(row=1, column=2)
+    out:<Cell Sheet1.B1>
+sheet.cell(row=1, column=2).value
+    out:'ATD'
+for i in range(1,8,2):
+    print(i,sheet.cell(row=i,column=2).value)
+out:1 ATD
+    3 10:21:00
+    5 12:21:00
+    7 14:21:00
+
+#确定表的大小
+sheet.max_column        #表格最大列
+    out:6
+sheet.max_row       #表格最大行
+    out:16
+
+#列字母是数字转换
+import openpyxl
+from openpyxl.cell.cell import get_column_letter, column_index_from_string
+get_column_letter(1)
+    out:'A'
+get_column_letter(234)
+    out:'HZ'
+column_index_from_string('A')
+    out:1
+column_index_from_string('aa')
+    out:27
+
+get_column_letter(sheet.max_column)
+    out:'F'
+
+#从列表中获得行和列
+sheet['A1':'D5']        #获得一个区域
+    out:((<Cell Sheet1.A1>, <Cell Sheet1.B1>, <Cell Sheet1.C1>, <Cell Sheet1.D1>),
+        (<Cell Sheet1.A2>, <Cell Sheet1.B2>, <Cell Sheet1.C2>, <Cell Sheet1.D2>),
+        (<Cell Sheet1.A3>, <Cell Sheet1.B3>, <Cell Sheet1.C3>, <Cell Sheet1.D3>))
+
+for i in sheet['A1':'C3']:
+    for j in i:
+        print(j.coordinate,j.value)
+    print('END OF ROW')
+
+out:A1 航班
+    B1 ATD
+    C1 ATA
+    END OF ROW
+    A2 CZ3609
+    B2 09:21:00
+    C2 10:57:00
+    END OF ROW
+    A3 CZ3610
+    B3 10:21:00
+    C3 11:57:00
+    END OF ROW
+
+#获得列、行
+sheet.columns
+    out:<generator object Worksheet._cells_by_col at 0x0000013E7C053F68>
+list(sheet.columns)
+    out:[(<Cell Sheet1.A1>,
+        <Cell Sheet1.A2>,
+        <Cell Sheet1.A3>,
+        ......), (...B1...
+        B2...B3...)]
+list(sheet.columns)[0]:
+    out:(<Cell Sheet1.A1>,
+        <Cell Sheet1.A2>,
+        <Cell Sheet1.A3>,
+        ............A16>)
+
+sheet['c3'].row
+    out:3
+sheet['c3'].column
+    out:'C'
+
+#创建并保存excel
+import openpyxl
+wb = openpyxl.Workbook()
+wb.get_sheet_names()        #列表形式输出
+    out:['Sheet']
+sheet = wb.get_active_sheet()
+sheet.title     #字符串形式输出
+    out:'Sheet'
+sheet.title = 'test sheet'      #sheet命名
+    out:'test sheet'
+wb.save('test.xlsx')        #保存并真正创建excel文件
+wb.save('test_copy.xlsx')       #保存的名字不同，想到于‘另存为’
+
+#创建和删除工作表
+wb = openpyxl.load_workbook('test.xlsx')
+wb.get_sheet_names()
+    out:['test sheet']
+wb.create_sheet()       #创建工作表，默认名称，默认位置为最后一个
+    out:<Worksheet "Sheet">
+wb.get_sheet_names()
+    out:['test sheet', 'Sheet']
+wb.create_sheet(index=0, title='first sheet')       #创建工作表，规定名称及位置
+    out:<Worksheet "first sheet">
+wb.get_sheet_names()
+    out:['first sheet', 'test sheet', 'Sheet']
+
+wb.remove(wb.get_sheet_by_name('Sheet'))        #删除工作表，remove方法只接受Worksheet形式的sheet数据，而非工作表名字的字符串
+
+#将值写入单元格
+sheet['B2'] = 'hello'       #类似字典加入键值
+
+#活用字典，减少if判断，且便于后期修改，见书P231，示例脚本updateProduce.py
+
+#设置单元格字体风格
+import openpyxl
+from openpyxl.styles import Font,Color
+from openpyxl.styles import colors
+
+sheet['a1'].font=Font(size=24,italic=True,color=colors.RED,bold=True,name='Times New Roman')     #字号，斜体，红色，粗体，字体名
+
+#公式
+sheet['b3'] = '=SUM(A1:A2)'
+
+wb = openpyxl.load_wordbook('test.xlsx')        #如上输入的公式单元格显示仍为公式，即'=SUM(A1:A2)'
+wb = openpyxl.load_wordbook('test.xlsx', data_only=True)        #如上输入的公式单元格显示为公式运算出的数值
+
+
+#调整行、列
+
+sheet.column_dimensions['a'].width = 90     #0~255整数或浮点数
+sheet.row_dimensions[1].height = 100        #0~409整数或浮点数
+
+#合并、拆分单元格
+import openpyxl
+wb = openpyxl.load_workbook('test.xlsx')
+wb.create_sheet('test sheet')
+sheet = wb.get_active_sheet()
+sheet.merge_cells('C5:D5')      #合并单元格
+sheet['c5'] = 'two cells'       #设置单元格左上角的单元格的值
+wb.save('merged.xlsx')
+
+import openpyxl
+wb = openpyxl.load_workbook('merged.xlsx')
+sheet = wb.get_active_sheet()
+sheet.unmerge_cells('C5:D5')        #拆分单元格
+wb.save('merged.xlsx')
+
+#冻结窗格
+单元格上边的所有行和左边的所有列都会冻结，但单元格所在行和列不会冻结
+
+sheet.freeze_panes = 'A2'       #行1冻结
+sheet.freeze_panes = 'B1'       #列A冻结
+sheet.freeze_panes = 'C1'       #列A和列B冻结
+sheet.freeze_panes = 'C2'       #行1和列A和列B冻结
+sheet.freeze_panes = 'A1'或sheet.freeze_panes = None     #无冻结
+
+#图表 -   教材中openpyxl版本过低，实际使用时可再研究
+
+创建图标需要做的事情：
+1，从一个矩形区域选择单元格，创建Reference对象
+2，通过Reference对象，创建一个Series对象
+3，创建Chart对象
+4，将Series对象添加到Chart对象
+5，可选的设置Chart对象的drawing.top drawing.left drawing.width drawing.height变量
+6，将Chart对象添加到Worksheet对象
+
+Reference对象解释：通过调用openpyxl.charts.Reference()函数并传入3个参数创建。
+1，包含图表数据的Worksheet对象
+2，两个整数的元组，代表矩形选择区域的左上角单元格，第一个是行，第二个是列。如（1,1），（10,1）及为第一列的A1~A10
+3，两个整数的元组，代表矩形选择区域的右下角单元格。（3,2），（6,4）即B2：D6
+
+
+【act13】-pdfword
+
+#从PDF提取文本
+
+import PyPDF2       #处理PDF中的文本，无法处理图想、图标、其他媒体
+file = open('meetingminutes.pdf', 'rb')
+pdfReader = PyPDF2.PdfFileReader(file)      #使用PyPDF2调用
+pdfReader.numPages
+    out:19      #获取PDF文档页数
+pageObj = pdfReader.getPage(0)      #提取第一页,第一页为下标0，第二页为下标1，以此类推
+pageObj.extractText()       #输出第一页text内容
+    out:text内容
+
+
+#解密PDF
+
+如为加密的PDF文件，调用getPage（）时会报错.解密只对本次调用生效，关闭程序后，PDF文件仍为加密状态。
+pdfReader.isEncrypted       #判断是否加密
+    out:True
+pdfReader = PyPDF2.PdfFileReader(file)
+    out：报错
+pdfReader。decrypt('password')       #输入密码解密
+    out:1       #密码正确返回1，错误返回0
+
+#创建PDF
+
+PyDF2模块只能从其他PDF文件中拷贝、旋转、重叠和加密文件，不能凭空生成新的PDF文档
+
+#拷贝页面
+将两个PDF文档拷贝合成一个PDF，见例combine.py
+
+#旋转页面
+import PyPDF2       #处理PDF中的文本，无法处理图想、图标、其他媒体
+file = open('meetingminutes.pdf', 'rb')
+pdfReader = PyPDF2.PdfFileReader(file)      #使用PyPDF2调用
+pdfReader.numPages
+    out:19      #获取PDF文档页数
+pageObj = pdfReader.getPage(0)
+pageObj.rotateClockwise(90)     #该页顺时针旋转90度
+
+#叠加页面、加密
+例如给PDF文件批量加水印，见例pdfMerge.py
+加密为.encrypt(user_passwd, owner_passwd),如果只输入一个密码，则用户和拥有者密码相同
+
+
+#处理word文档
+模块名python-docx，import docx
+docx文档结构为documen（整个文档），包含Paragraph（段落,一个回车算1段）对象的列表，每个Paragraph包含一个Run（相同样式文字的延续，包括颜色、字体等）对象的列表
+
+#读取word文档
+import docx
+doc = docx.Document('demo.docx')        #传入docx文件
+len(doc.paragraphs)     #Paragraph对象个数
+    out:7
+doc.paragraphs[1].text      #调用text属性，获得paragraph[1]内容
+    out:''A plain paragraph with some bold and some italic'
+len(doc.paragraphs[1].runs)     #paragraph[1]中有几个runs对象
+    out:5
+doc.paragraphs[1].runs[0].text      #调用text属性，获得runs[1]内容
+    out:'A plain paragraph with'
+doc.paragraphs[1].runs[1].text
+    out:' some '
+doc.paragraphs[1].runs[2].text      #字体或样式不同，则被划分为不同的run对象
+    out:'bold'
+
+#从.docx文件汇总取得完整文本
+见例readDocx.py
+
+import sys
+sys.path.append('C:\\Users\\daize\\Desktop\\pythontest\\autopython\\act13-pdfword')
+from readDocx import getText
+print(getText('..\\..\\Automate\\demo.docx'))
+    out:docx文档内容的text形式
+
+#设置Paragraph和Run对象格式
+#设置run对象的格式
+
+doc = docx.Document('demo.docx')
+doc.paragraphs[0].style
+    out:'Title'
+doc.paragraphs[0].style = 'Normal'      #使具有normal样式
+doc.paragraphs[1].runs[0].style = 'QuoteChar'       #设置QuoteChar样式
+doc.paragraphs[1].runs[1].underline = True      #下划线
+doc.save('restyled.docx')
+
+#写入word文档
+
+import docx
+doc = docx.Document()
+doc.add_paragraph('Hello world')
+doc.save('hello.docx')
+
+para1 = doc.add_paragraph('second para')        #增加一段内容
+para1.add_run('add second paragraph')       #在para1内容后面追加内容
+
+#paragraph只能添加在文档末尾，run只能添加在paragraph末尾
+
+doc.add_paragraph('hello', 'Title')     #第二个参数传入样式
+
+#添加标题
+doc = docx.Docucment()
+doc.add_heading('head 0', 0)        #添加标题，第一个参数是标题内容，第二个参数是标题层次，例如第二个参数一次为0,1,2，则2是1的子标题，1是0的子标题
+doc.add_heading('head 1', 1)
+doc.add_heading('head 2', 2)
+
+#添加换行符、换页符
+doc.paragraphs[0].runs[0].add_break(docx.text.WD_BREAK.PAGE)        #add_break()为换行符，传入docx.text.WD_BREAK.PAGE后，直接换页，即新生成一页。在写入会写到新word页中。
+
+#添加图像
+doc.add_picture('p.png', width=docx.shared.Inches(1), height=docx.shared.Cm(4))     #第二和第三个参数为可选参数，设定宽和高，其中宽为英尺，高为厘米。
+
+
+【ACT14】--处理CSV和JSON数据
+
+CSV - 简化的纯文本的电子表格，同一行表格信息通常情况下以逗号分隔，如有多行数据，每行数据为一个二元数组。无Excel各种功能。
+JSON - JavaScript形式的纯文本，用于许多web应用，网站提供的API一般为JSON
+
+#CSV读取
+
+
+import csv
+file = open('C:\\Users\\daize\\Desktop\\pythontest\\Automate\\example.csv')
+fileReader = csv.reader(file)
+list(fileReader)        #可以通过list直接获取列表使用，或如下遍历使用
+    out:[['4/5/2014 13:34', 'Apples', '73'],
+ ['4/5/2014 3:41', 'Cherries', '85']]
+
+fileReader.line_num     #显示行数,如不在遍历中，直接输出总行数
+
+for i in fileReader:
+    print(fileReader.line_num)
+        out:1
+            2
+            3
+            ..
+            7
+
+#Reader对象只能循环遍历一次，再次读取需要重新调用csv.reader
+
+
+#CSV写入
+import csv
+outPut = open('C:\\Users\\daize\\Desktop\\pythontest\\Automate\\output.csv', 'w', newline='')       #windows下必须有newline=''参数，否则生成的excel默认双倍行距
+outPutWriter = csv.writer(outPut)
+outPutWriter.writerow(['a', 'b', 'c', 'd'])     #csv.writer方法接受列表参数
+    out:9       #返回的这一样的字符数，包括换行字符
+outPut.close()
+
+outPut = open('C:\\Users\\daize\\Desktop\\pythontest\\Automate\\output.tsv', 'w', newline='')       #保存为.tsv格式，因为是以制表符（tab）为行中间隔符
+outPutWriter = csv.writer(outPurt, delimiter='\t', lineterminator='\n\n')       #改分隔符为tab（默认为逗号），行终止符为2个回车（默认为1个回车）
+
+
+#JSON
+json不能存储python值，如file对象，csv reader、writer对象等。只能处理字符串，整型，浮点型，布尔型，列表，字典和NoneType。
+
+#用loads()函数读取json
+import json
+jsonData = '{"name": "zop", "iscat": true, "mice": 0, "felineiq": null}'        #json字符串用双引号，loads进python字典后，变为单引号且无序
+jsonValue = json.loads(jsonData)
+jsonValue
+Out[5]:
+{'felineiq': None, 'iscat': True, 'mice': 0, 'name': 'zop'}
+
+
+#用dumps写出json
+pythonValue = {'felineiq': None, 'iscat': True, 'mice': 0, 'name': 'zop'}
+json.dumps(pythonValue)     #将python字典（或列表，int，float，str，布尔型或None）格式化为json格式
+Out[8]:
+'{"mice": 0, "name": "zop", "felineiq": null, "iscat": true}'
+
+
+【ACT15】-保持时间、计划任务和启动程序
+
+#time
+
+time.time()     #获得当前时间戳
+一种剖析代码执行速度的方式为，代码开始和结束时分别执行time.time()获得两个时间戳，相减即可，如
+starttime = time.time()
+def（）
+endtime = time.time()
+starttime - endtime
+
+time.sleep()        #暂停N秒
+由于idle中ctrl+c无法在sleep期间中断，所以如要sleep(30)秒，应该for循环30次sleep(1)
+
+round(数值，传入小数点后几位、默认为到整数位)      #四舍五入
+round(time.time())
+Out[14]:
+1484893758
+round(time.time(), 2)
+Out[15]:
+1484893763.71
+
+#datatime模块
+
+datetime.datetime.now()
+Out[17]:
+    datetime.datetime(2017, 1, 20, 15, 17, 57, 743548)
+dt = datetime.datetime(2017, 1, 20, 15, 17, 57)
+dt.year
+    Out[20]: 2017
+dt.year,dt.month,dt.day
+    Out[21]: (2017, 1, 20)
+dt.hour,dt.minute,dt.second
+    Out[22]: (15, 17, 57)
+
+#处理时间戳
+datetime.datetime.fromtimestamp(1000000)
+    out:datetime.datetime(1970, 1, 12, 21, 46, 40)
+datetime.datetime.fromtimestamp(time.time())
+    out:datetime.datetime(2017, 1, 20, 15, 40, 17, 976057)
+
+#datetime对象比较大小
+datetime.datetime(2017, 1, 20, 15, 40, 17, 976057) > datetime.datetime(1970, 1, 12, 21, 46, 40)
+    out:True
+
+#timedelta数据类型，表示一段时间
+delta = datetime.timedelta(days=11, hours=10, minutes=9, seconds=8)
+delta.days, delta.seconds, delta.microseconds       #没有.minute，.hours属性，这里的.seconds表示的10小时9分8秒
+    Out[27]: (11, 36548, 0)
+delta.total_seconds()       #11天10小时9分8秒的总秒数
+    Out[28]: 986948.0
+str(delta)      #可字符串化为易读格式
+    Out[29]: '11 days, 10:09:08'
+
+timedelta可以进行算数运算
+dt = datetime.datetime.now()
+dt
+    out:datetime.datetime(2017, 1, 22, 0, 41, 46, 303519)
+thousandDays = datetime.timedelta(days=1000)
+dt + thousandDays
+    out:datetime.datetime(2019, 10, 19, 0, 41, 46, 303519)
+dt + thousandDays * 2       #还可以进行乘法
+    out:datetime.datetime(2022, 7, 15, 0, 41, 46, 303519)
+
+#暂停直至特定日期
+
+future = datetime.datetime(2016,10,31,0,0,0)
+while datetime.datetime.now() < future:
+    time.sleep(1)
+
+#datetime对象转换为字符串
+strftime()指令
+%Y  带世纪的年份，如2014
+%y  不是世纪的年份，00~99，如2014的14
+%m  数字月份，01~12
+%B  英文全写月份，如November
+%b  简写的月份，如Nov
+%d  一月中的第几天，01~31
+%j  一年中的第几天，001~366
+%w  一周中的第几天，0（周日）~6（周六）
+%A  完整的周几，如Monday
+%a  简写的周几，如Mon
+%H  小时，24小时制，00~23
+%I  小时，12小时制，00~12
+%M  分，00~59
+%S  秒，00~59
+%p  AM或PM
+%%  就是%字符
+
+oct21st = datetime.datetime(2015,10,21,16,29,0)
+oct21st.strftime('%Y/%m/%d %H:%M:%S')
+    out:'2015/10/21 16:29:00'
+oct21st.strftime('%Y/%m/%d of %H:%M:%S')        #可加字符串
+    '2015/10/21 of 16:29:00'
+
+#字符串转为datetime对象
+strptime()      #p表示parse，解析
+datetime.datetime.strptime('2015/10/21 16:29:00', '%Y/%m/%d %H:%M:%S')      #第一个参数为str格式的时间，第二个参数为该定制格式的字符串
+    out:datetime.datetime(2015,10,21,16,29)
+datetime.datetime.strptime('2015/10/21 of 16:29:00', '%Y/%m/%d of %H:%M:%S')
+    out:datetime.datetime(2015, 10, 21, 16, 29)
+
+
+#多线程
+见实例threadingDemo.py
+
+import threading, time
+print('start of program')
+def takeANap():
+    time.sleep(5)
+    print('wake up')
+threadObj = threading.Thread(target=takeANap)       #target参数为takeANap而不是takeANap（），因为takeANap（）是一个返回值，而要多线程处理的是函数
+threadObj.start()
+print('end of progrom')
+
+out:start of program
+    end of progrom
+    wake up
+执行结果分析，程序开始时线程1开始执行到输出‘end of program’结束，线程2从threadOjb.start()开始执行，到‘wake up’结束
+
+
+#向线程的目标函数传递参数
+print('cat','dog','frog',sep='&')
+    out:cat&dog&frog
+
+threadObj = threading.Thread(target=print, args=['cat','dog','frog'],kwargs={'sep':'&'})        #常规参数，如cat、dog，可作为列表传递给threading.Thread()的args关键字参数；关键字参数，如sep，可作为字典传递给threading.Thread（）的kwargs关键字参数
+threadObj.start()
+    out:cat&dog&frog
+
+#并发问题
+决不让多个线程读取或写入相同的变量，当建立一个线程时，要确保目标函数只使用该函数中的局部变量
+
+#等待所有线程结束，再继续运行主程序余下的代码
+for threading in threadings:
+    threading.join()        #Thread对象的join方法可阻塞，直到该线程完成，通过for循环对每个线程调用join()方法，可直到所有线程完成再执行主程序剩余代码。
+print('done')
+#可见实例act15 multidownloadkukudm.py
+
+#同一程序的多进程和多线程的解释
+多线程像多个手指在追踪源代码，多进程像一个便宜拿着程序源代码的独立的副本独立，我们独立执行相同的程序
+
+
+#从python启动其他程序
+一个进程可以有多个线程
+通过python启动的程序，和python程序本身不在同一线程中
+
+import subprocess
+subprocess.Popen('C:\\Windows\\System32\\calc.exe')
+    out:<subprocess.Popen at 0x226806e6b38>     #返回值是一个Popen对象，同时打开计算器
+
+calc = subprocess.Popen('C:\\Windows\\System32\\calc.exe')
+calc.poll == None
+    out:True
+calc.poll()     #如果该进程仍在运行，返回None，如果已经终止，返回整数退出代码，无错终止为0，有错导致终止通常为1
+    out:0
+calc.wait()     #阻塞，知道进程终止。可暂停当前程序，返回值是整数退出代码
+    out:0
+
+
+#向Popen()传递命令行参数
+subprocess.Popen(['C:\\Windows\\notepad.exe', 'C:\\hello.txt'])     #向Popen传递一个列表，第一个参数是要打开的程序，后续的字符是传递一个程序的参数。上例表示用notepad打开一个hello.txt的文件
+
+subprocess.Popen(['C:\\python34\\python.exe', 'C:\\hello.py'])      #在python程序中执行python程序，执行后都是独立的
+
+#用默认的应用程序打开文件
+subprocess.Popen(['start', 'C:\\hello.txt'], shell=True)        #windows是start且shell=True是windows特有，执行后会用默认程序notepad打开txt文件。UBUNTU Linux是see
+
+
+
+【ACT16】--电子邮件和短信
+
+#SMTP       !!!下述的发信方式疑似有问题，发出的邮件无内容。还是需要使用from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart模块编辑邮件内容
+import smtplib
+smtpObj = smtplib.SMTP_SSL('smtp.exmail.qq.com', 465)       #创建一个ssl加密的smtp对象
+smtpObj = smtplib.SMTP('smtp.gmail.com', 587)       #TLS加密的smtp对象，且此连接方式需要用smtpObj.starttls()进行TLS加密，ssl加密的不需要此步骤
+
+smtpObj.ehlo()
+    out:(250,
+ b'smtp.qq.com\nPIPELINING\nSIZE 73400320\nAUTH LOGIN PLAIN\nAUTH=LOGIN\nMAILCOMPRESS\n8BITMIME')       #250返回码代表连接成功
+
+smtpObj.login('email_account', 'email_passwd')      #登录邮箱
+    out:(235, b'Authentication successful')     #成功后的返回值
+
+smtpObj.sendmail('email_account', 'receiver_email', 'Subject:hello\nemail_content')        #发送邮件，三个参数，发件人，收件人，邮件内容必须以'Subject: \n'开头
+    out:{}      #所有收件人都发送成功，会返回空
+
+smtpObj.quit()      #与SMTP服务器断开
+    out：（221，...）       #返回221即断开成功
+
+===============================================
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+
+sender = 'from@runoob.com'
+receivers = ['429240967@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+
+# 三个参数：第一个为文本内容，第二个 plain 设置文本格式，第三个 utf-8 设置编码
+message = MIMEText('Python 邮件发送测试...', 'plain', 'utf-8')
+message['From'] = Header("菜鸟教程", 'utf-8')
+message['To'] =  Header("测试", 'utf-8')
+
+subject = 'Python SMTP 邮件测试'
+message['Subject'] = Header(subject, 'utf-8')
+
+
+try:
+    smtpObj = smtplib.SMTP('localhost')
+    smtpObj.sendmail(sender, receivers, message.as_string())
+    print "邮件发送成功"
+except smtplib.SMTPException:
+    print "Error: 无法发送邮件"
+==================================================
+
+
+#IMAP收件箱
+
+！！需要安装pip install imapclient==0.13版本能避免ssl问题
+
+import imapclient, pprint
+imapObj = imapclient.IMAPClient('imap.gmail.com', ssl=True)     #创建IMAPClinet对象，且参数中一般都需要带ssl=True加密
+imapObj.login('email_account', 'email_passwd')
+pprint.pprint(imapObj.list_folders())       #格式化输出收件箱列表
+    [...
+    ......,'/','INBOX'
+    ...]
+imapObj.select_folder('INBOX', readonly=True)       #选择收件箱INBOX进行搜索
+
+#执行搜索
+imapObj.search([''])        #search不返回邮件本身，而是邮件的唯一整数ID，然后将这些UID传入fetch()方法获得邮件内容
+UIDs = imapObj.search(['SINCE 05-Jul-2015'])
+UIDs
+    out:[40031,40032,40033]
+
+'ALL'       返回该文件夹中的所有邮件。如果你请求一个大文件夹中的所有消息，可能会遇到imaplib 的大小限制。参见16.4.6 小节“大小限制”
+'BEFORE date',
+'ON date',
+'SINCE date'        这三个搜索键分别返回给定date 之前、当天和之后IMAP 服务器接收的消息。日期的格式必须像05-Jul-2015。此外，虽然'SINCE 05-Jul-2015'将匹配7 月5 日当天和之后的消息，但'BEFORE 05-Jul-2015'仅匹配7 月5 日之前的消息，不包括7 月5 日当天
+'SUBJECT string',
+'BODY string',
+'TEXT string'       分别返回string 出现在主题、正文、主题或正文中的消息。如果string 中有空格，就使用双引号：'TEXT "search with spaces"'
+'FROM string',
+'TO string',
+'CC string',
+'BCC string'        返回所有消息，其中string 分别出现在“from”邮件地址，“to”邮件地址，“cc”（抄送）地址，或“bcc”（密件抄送）地址中。 如果string 中有多个电子邮件地址，就用空格将它们分开，并使用双引号： 'CC "firstcc@example.com secondcc@example.com"'
+'SEEN',
+'UNSEEN'        分别返回包含和不包含\ Seen 标记的所有信息。如果电子邮件已经被fetch()方法调用访问（稍后描述），或者你曾在电子邮件程序或网络浏览器中点击过它，就会有\ Seen标记。比较常用的说法是电子邮件“已读”，而不是“已看”，但它们的意思一样。
+'ANSWERED',
+'UNANSWERED'        分别返回包含和不包含\ Answered 标记的所有消息。如果消息已答复，就会有\Answered 标记
+'DELETED',
+'UNDELETED'     分别返回包含和不包含\Deleted 标记的所有信息。用delete_messages()方法删除的邮件就会有\Deleted 标记，直到调用expunge()方法才会永久删除（请参阅16.4.10 节“删除电子邮件”）。
+请注意，一些电子邮件提供商，例如Gmail，会自动清除邮件
+'DRAFT',
+'UNDRAFT'       分别返回包含和不包含\ Draft 标记的所有消息。草稿邮件通常保存在单独的草稿文件夹中，而不是在收件箱中
+
+imapObj.search(['ALL'])         返回当前选定的文件夹中的每一个消息。
+imapObj.search(['ON 05-Jul-2015'])      返回在2015 年7 月5 日发送的每个消息。
+imapObj.search(['SINCE 01-Jan-2015', 'BEFORE 01-Feb-2015', 'UNSEEN'])       返回2015 年1 月发送的所有未读消息（注意，这意味着从1 月1 日直到2 月1 日，但不包括2 月1 日）。
+imapObj.search(['SINCE 01-Jan-2015', 'FROM alice@example.com'])     返回自2015 年开始以来，发自alice@example.com 的消息。
+imapObj.search(['SINCE 01-Jan-2015', 'NOT FROM alice@example.com'])     返回自2015 年开始以来，除alice@example.com 外，其他所有人发来的消息。
+imapObj.search(['OR FROM alice@example.com FROM bob@example.com'])      返回发自alice@example.com 或bob@example.com 的所有信息。
+imapObj.search(['FROM alice@example.com', 'FROM bob@example.com'])      恶作剧例子！该搜索不会返回任何消息，因为消息必须匹配所有搜索关键词。因为只能有一个“from”地址，所以一条消息不可能既来自alice@example.com，又来自bob@example.com。
+
+imaplib._MAXLINE = 1000000      #搜索匹配到的内容有大小限制，可通过此代码修改
+
+#取邮件并标记为已读
+rawMessages = imapObj.fetch(UIDs, ['BODY[]'])
+pprint.pprint(rawMessages)
+    out:{40040: {'BODY[]':...}
+    }       #提取邮件内容，返回以UID为键的嵌套字典,'BODY[]'键中的内容为RFC822格式，不易读，可用pyzmail模块解读
+
+如果希望邮件提取后标记为已读，那么imapObj.select_folder('INBOX', readonly=False)中的readonly为False
+
+#从原始消息中获取电子邮件地址
+import pyzmail
+message = pyzmail.PyzMessage.factory(rawMessage[40041][b'BODY[]'])       #获得BODY内容，注意此处与书中不同，使用了二进制表示，否则报错
+message.get_subject()       #获得标题内容
+    out:'hello'
+message.get_addresses('from')       #获得发件人信息列表
+    out:[('jack', 'jack@nsa.gov')]
+message.get_addresses('to')       #获得收件人信息列表
+    out:[('mike', 'mike@nsa.gov')]
+message.get_addresses('cc')       #获得抄送人信息列表
+    out:[]
+message.get_addresses('bcc')       #获得密抄人信息列表
+    out:[]
+
+#从原始消息中获得正文
+message.text_part != None       #如果只是HTML，则结果会输出False
+    out:True
+message.text_part.get_payload().decode(message.text_part.charset)       #获得可读的信息
+    out:'So long,and ...\r\n'
+
+message.html_part != None       ##如果只是text
+，则结果会输出False
+    out:True
+message.html_part.get_payload().decode(message.html_part.charset)       #获得可读的信息
+    out:<div ...>So long...</div>\n\n
+
+
+#删除电子邮件
+imapObj.select_folder('INBOX', readonly=False)      #选择收件箱时readonly=False
+UIDs = imapObj.search(['ON 09-Jul-2015'])
+UIDs
+    out:[40066]
+imapObj.delete_messages(UIDs)       #调用delete_messages，给UID对应的邮件打\Deleted标记
+    out:{40066:('\\Seen', '\\Deleted')}
+imapObj.expunge()       #删除打了\Deleted标记的邮件
+    out:('Success', [(5452, 'EXISTS')])
+
+#从IMAP服务器断开
+imapObj.logout()
+如果因为连接超时断开，那就需要重新连接
+
+
+#用Twilio发送短信
+需注册，目前为收费，无法使用
+如可使用，直接调用API即可，例如阿里与短信API
+
+
+【ACT17】 - 操作图像
+
+#颜色和RGBA值
+
+像素是计算机屏幕上能显示一种颜色的最小点
+RGBA - 红绿蓝 alpha（透明度）
+
+红色（255,0,0,255）
+绿色（0，255,0,255）
+蓝色（0,0,255,255）
+白色（255,255,255,255）     #记住白色是各种颜色的组合
+黑色（0,0,0,255）       #记住黑色是没有任何颜色，所以是0
+
+pillow中，RGBA的值表示为四个整数的元组，但pillow使用了HTML的标准颜色名称
+
+from PIL import ImageColor
+ImageColor.getcolor('green', 'RGBA')
+    out:(0, 128, 0, 255)
+
+#坐标和Box元组
+图形坐标以坐上为（0,0），即（x,y），向右x增加，向下y增加
+pillow一般为矩形元组参数，例如（3,1,9,6），左上角坐标（3,1），右下坐标（9,6）。注意该矩形包括左上角坐标，直到但不包括右下坐标！！！
+
+#用pillow操作图像
+
+from PIL import Image
+catIm = Image.open('C:\\Users\\daize\\Desktop\\pythonTEST\\Automate\\zophie.png')       #加载图片
+type(catIm)
+    out:PIL.PngImagePlugin.PngImageFile
+
+#处理Image数据类型
+catIm.size
+    out:(816, 1088)
+width, heigh = catIm.size
+width
+    Out[8]: 816
+heigh
+    Out[9]: 1088
+catIm.filename
+    Out[10]: 'C:\\Users\\daize\\Desktop\\pythonTEST\\Automate\\zophie.png'
+catIm.format
+    Out[11]: 'PNG'
+catIm.format_description
+    Out[12]: 'Portable network graphics'
+catIm.save('C:\\Users\\daize\\Desktop\\pythonTEST\\Automate\\zophie.jpg')       #转换格式
+
+#Image.new()方法
+from PIL import Image
+im = Image.new('RGBA', (100, 200), 'purple')        #Image.new方法参数为颜色模式，图像宽高，背景颜色
+im.save('C:\\Users\\daize\\Desktop\\pythonTEST\\Automate\\purpleImage.png')
+im2 = Image.new('RGBA', (20, 20))       #默认为黑色
+im2.save('C:\\Users\\daize\\Desktop\\pythonTEST\\Automate\\transparentImage.png')
+
+#裁剪图片
+croppedIm = catIm.crop((335,345,565,560))     #注意双括号。原始Image对象不改变。矩形元组包括左列和顶行的像素，直至但不包括右列和底行的像素
+croppedIm.save('C:\\Users\\daize\\Desktop\\pythonTEST\\Automate\\cropped.png')
+
+#复制和粘贴图像到其他图像
+catIm = Image.open('C:\\Users\\daize\\Desktop\\pythonTEST\\Automate\\zophie.png')
+catCopyIm = catIm.copy()        #复制图像
+faceIm = croppedIm = catIm.crop((335,345,565,560))      #剪切一个矩形区域
+catCopyIm.paste(faceIm, (0,0))      #以左上为顶点粘贴上述剪切的图片
+catCopyIm.paste(faceIm, (400,500))   #以400,400为左上顶点粘贴图片
+catCopyIm.save('pasted.png')
+#catCopyIm.paste(faceIm, (400,500)， faceIm)      #paste()的第三个参数代表，如果无该参数，则不会粘贴透明的像素，见例子resizeAndAddLogo.py
+
+#平铺一个图像到全图
+catImWidth, catImHeight = catIm.size
+faceImWidth, faceImHeight = faceIm.size
+catCopyTwo = catIm.copy()
+for left in range(0, catImWidth, faceImWidth):
+    for top in range(0, catImHeight, faceImHeight):
+        print(left, top)
+        catCopyTwo.paste(faceIm, (left, top))
+catCopyTwo.save('tiled.png')
+
+#调整图像大小
+width, height = catIm.size
+quartersizedIm = catIm.resize((int(width/2), int(height/2)))        #size必须为整数
+quartersizedIm.save('quartersizedIm.png')       #resize不会在原图上修改，而是返回一个新的Image对象
+
+#旋转和翻转图像
+catIm.rotate(90).save('rotated90.png')      #逆时针旋转90°。rotate不修改原图，会生成新Image对象。rotate()的参数为整数或浮点数，表示逆时针旋转的度数。
+
+catIm.rotate(6,expand=True).save('rotate6_expanded.png')        #使用expand参数，会拉伸图片，填补旋转图片后露出的空白
+
+catIm.transpose(Image.FLIP_LEFT_RIGHT).save('horizontal_flip.png')      #水平翻转图像
+catIm.transpose（Image.FLIP_TOP_BOTTOM).save('vertical_flip.png')        #垂直翻转图像
+
+
+#更改单个像素
+im = Image.new('RGBA', (100,100))
+im.getpixel((0,0))      #获取单个像素的颜色
+    out:(0,0,0,0)
+for x in range(100):
+    for y in range(50):
+        im.putpixel((x,y),(210,210,210))        #循环给像素上色，(210,210,210)为浅灰色
+from PIL import ImageColor      #要使用'darkgray'给图片下半部分上色，由于putpixel()方法不接受'darkgray'的颜色色组，故导入ImageColor
+for x in range(100):
+    for y in range(50,100):
+        im.putpixel((x,y), ImageColor.getcolor('darkgray', 'RGBA'))
+im.save('putpixel.png')     #获得一张上半部分灰色，下半部分darkgray的图片
+
+
+#在图像上绘画
+from PIL import Image
+from PIL import ImageDraw
+im = Image.new('RGBA', (200, 200), 'white')
+draw = ImageDraw.Draw(im)       #保存为ImageDraw对象，该对象有些方法可绘画
+
+#绘制形状
+
+#点
+point(xy,fill)      #xy表示要画的点的列表。如坐标元组[(x,y),(x,y)...],或坐标列表[x1,y1,x2,y2...].fill是点的颜色，可以RGBA元组，或颜色名称字符串，fill为可选参数
+
+#线
+line(xy,fill,width)     #draw.line([(0,0),(199,0),(199,199),(0,199),(0,0)], fill='black'， width=1)。xy可以是元组列表或整数列表。每个点都是正在绘制的线上的一个连接点。fill可选参数，表示颜色，可选的width参数，是线的宽度，默认为1
+
+#矩形
+rectangle(xy,fill,outline)     #draw.rectangle((20,30,60,60), fill = 'blue')。xy是矩形元组（left，top，right，bottom）。outline可选参数，表示矩形轮廓颜色
+
+#椭圆
+ellipse(xy,fill,outline)        #基本同矩形，xy代表的是正好包含该椭圆的矩形
+
+#多边形
+polygon(xy,fill,outline)        #xy可为[(x,y),(x,y)...]或[x1,y1,x2,y2...]，表示多边形的连接点。最后一对坐标自动连接到第一对坐标。fill和outline同上。
+
+
+#绘制文本
+使用ImageDraw对象的text()方法，4个参数xy，text，fill，font。xy为整数元组表示文本区域左上角，text表示要绘制的文本内容，fill为文本颜色，font为字体字号
+from PIL import Image,ImageDraw,ImageFont       #ImageFont提供可选参数font对象
+import os
+im = Image.new('RGBA',(200,200),'white)
+draw = ImageDraw.Draw(im)
+draw.text((20,150),'hello',fill='purple')       #默认字体
+fontsFolder = 'FONT_DOLDER'     #字体文件的文件夹名
+arialFont = ImageFont.truetype(os.path.join(fontsFloder, 'arial.ttf'),32)       #字体文件路径和字体大小
+draw.text((100,150),'howdy',fill='gray',font=arialFont)     #带字体字号的文本绘制
+im.save
+
+ImageDraw的textsize()方法返回一个两整数数组，表示想知道的文本的宽度和高度，通过该值货值文本放在图像上的位置。第一个参数是要测量的文本字符串，第二个参数是可选的ImageFont对象。
+
+
+
+【ACT18】--自动化控制键盘和鼠标
+图形用户界面自动化（GUI自动化）
+
+安装pyautogui
+linux还需手动安装依赖python3-xlib,scrot,python3-tk,python3-dev
+
+#停止失控方法：
+注销。或
+import pyautogui
+pyautogui.PAUSE = 1     #每个pyautogui函数调用执行动作后等待1秒
+pyautogui.FAILSAFE = True       #自动防故障功能。开启后向左上移动鼠标可停止程序。
+
+
+#控制鼠标移动
+鼠标函数使用x,y坐标。原点x，y都是0，左向右x坐标增加，向下y坐标增加。如分辨率1920*1080，则左上角坐标(0,0),右下角坐标(1919,1079)
+
+import pyautogui
+pyautogui.size()        #返回整数元组，代表屏幕的宽和高的像素数
+    out:(1920, 1080)
+
+#移动鼠标
+
+moveTo(x,y)        #立即将鼠标移动到指定位置
+for i in range(10):
+    pyautogui.moveTo(100,100,duration=0.25)     #duration为可选参数，指定鼠标移到目的位置所需秒数，为整数或浮点数
+    pyautogui.moveTo(100, 200, duration=0.25)
+    pyautogui.moveTo(200, 100, duration=0.25)
+
+moveRel(xOffset,yOffset)       #从鼠标当前位置开始移动
+for i in range(10):
+    pyautogui.moveRel(100,0,duration=0.25)
+    pyautogui.moveRel(0,100,duration=0.25)
+    pyautogui.moveRel(-100,0,duration=0.25)
+
+
+#获取鼠标位置
+pyautogui.position()        #返回当前鼠标坐标元组
+    out:(851, 513)
+
+
+#鼠标点击
+pyautogui.click()       #在鼠标当前位置点击鼠标左键
+pyautogui.click(10,5,button='left')     #在(10,5)位置点击鼠标左键
+pyautogui.click(10,5,button='right')     #在(10,5)位置点击鼠标右键
+pyautogui.mouseDown()     #按下鼠标按键
+pyautogui.mouseUp()     #释放鼠标按键
+pyautogui.doubleClick()     #双击鼠标左键
+pyautogui.rightClick()      #双击右键
+pyautogui.middleClick       #双击中键
+
+#拖动鼠标
+pyautogui.dragTo(x,y)      #按下左键拖动到一个新位置
+pyautogui.dragRel(xOffset,yOffset)     #拖动到相对当前位置的一个坐标位置
+
+画一个方形螺旋图案
+import pyautogui, time
+time.sleep(5)
+pyautogui.click     #focus
+distance = 200
+while distance > 0 :
+    pyautogui.dragRel(distance, 0, duration=0.2)        #move right
+    distance = distance - 5
+    pyautogui.dragRel(0, distance, duration=0.2)        #move down
+    pyautogui.dragRel(-distance, 0, duration=0.2)        #move left
+    distance = distance - 5
+    pyautogui.dragRel(0, -distance, duration=0.2)        #move up
+
+#滚动鼠标
+pyautogui.scroll(200)       #向上滚动200单位，各系统单位不同。
+pyautogui.scroll(-200)      #向下滚动200单位
+
+
+#获取屏幕快照
+im = pyautogui.screenshot()     #生成一个屏幕快照的Image对象
+im = getpixel((0,0))
+    out:(176,176,175)       #像素RGBA颜色。没有第四个alpha，因为快照是不透明的。
+
+#分析屏幕快照
+如要点击灰色按钮，可先判断要点击的坐标像素颜色。
+
+im = pyautogui.screenshot()
+im.getpixel((50,200))
+    out:(130,135,144)
+pyautogui.pixelMatchesColor(50,200,(130,135,144))       #pixelMatchesColor()方法判断参数提供的坐标处的颜色和参数提供的颜色是否匹配。参数是整数，第一、二个对应x，y坐标，第三个是RGB颜色元组
+    out:True
+
+
+#图像识别
+如在当前屏幕快照中截取了一部分生成一格新图像，保存为submit.png。通过locateOnScreen()函数返回图像所在处的坐标。
+pyautogui.locateOnScreen('submit.png')
+    out:(123,345,456,678)       #屏幕上首次发现该图像时左边的x，顶边的y，宽度，高度。如屏幕上找不到，会返回None。
+
+list(pyautogui.locateOnScreen('submit.png'))
+    out:[(1,1,1,1),(2,2,2,2)]       #如找到多处，会返回4整数元组的列表。
+
+##找到目标位置选中中心进行点击的操作
+pyautogui.locateOnScreen('submit.png')
+    out:(123,345,456,678)
+pyautogui.center((123,345,456,678))     #参数为元组。及上一行命令获得的位置坐标。
+    out:(678,759)       #返回该区域中心的坐标
+pyautogui.click((678,759))
+
+
+
+#通过键盘发送字符串
+pyautogui.click(100,100)            #在预先打开的写字板上点击
+pyautogui.typewrite('hello')        #控制键盘键入字符串
+pyautogui.typewrite('hello'， 0.25)      #第二参数为输入每个字符的间隔
+
+#键名
+除单个字符串，还可以给pyautogui.typewrite()传递列表，带键名的例子:
+pyautogui.typewrite(['a','b','left','left','X','Y'])
+    写入结果为:'XYab'
+
+PyKeyboard属性
+'a','A','1','!','@','#'等等       #单个字符的键
+'enter'(or 'return' or '\n')        #回车键
+'esc'       #Esc键
+'shiftleft','shiftright'        #左右shift键
+'altleft','altright'        #左右alt键
+'ctrlleft','ctrlright'      #左右ctrl
+'tab'(or '\t')      #Tab
+'backspace','delete'        #Backspace和Delete键
+'pageup','pagedown'     #page up和page down
+'home','end'        #home和end键
+'up','down','left','right'      #上下左右箭头键
+'f1','f2','f3'等等        #F1至F12
+'volumemute','volumedown','volumeup'        #静音，减小音量，放大音量
+'pause'     #Pause键
+'capslock','numlock','scrolllock'        #Caps lock,num lock和scroll lock
+'insert'        #ins或insert键
+'printscreen'       #Prtsc或Print Screen键
+'winleft','winright'        #左右win键
+'command'       #Command键（os x上）
+'option'        #Option键（os x上）
+
+
+#按下和释放键盘
+pyautogui.keyDown('shift')      #按下shift
+pyautogui.press('4')        #按键4
+pyautogui.keyUp('shift')        #松开shift
+
+#热键组合
+pyautogui.hotkey('ctrl', 'c')
+
+
+【函数】
+
+#函数的注释
+def sq(x):
+    'hahahaha'
+    return x*x
+sq.__doc__
+Out[3]:
+'hahahaha'
+
+def sq1(x):
+    'hahaha111'
+    '23ffds'
+    return None
+sq1.__doc__     #只显示第一行的字符串
+Out[9]:
+'hahaha111'
+
+help(sq)        #help()功能同上
+Help on function sq in module __main__:
+sq(x)
+    hahaha
+
+def xx():
+    print(11)
+    return
+print(xx())
+11
+None
+#所有函数都会返回东西，如return后无返回值，则返回none
+
+def param(title, *params):
+    print title
+    print params
+prarm('song', 1, 2, 3)
+    out:song
+        (1,2,3)
+#可变参数，一个‘*’符号加上变量，指其余的所有参数，形成一个元祖
+
+def param(**params):
+    ruturn params
+param(x=1,y=2,c=3)
+    out:{'x':1,'y':2,'c':3}
+#如果是两个‘*’符号，如**params，指可以收集关键字参数。
+
+dict={'x':1,'y':2,'c':3}
+def param(**params):
+    ruturn params
+param(**dict)
+    out:{'x':1,'y':2,'c':3}
+#逆过程
+
+def eg(x,y,z=3,*pospar,**keypar):
+    print x,y,z
+    print pospar
+    print keypar
+ex(1,2,3,5,6,7,foo=1,bar=2)
+    out:1,2,3
+        (5,6,7)
+        {'foo':1,'bar':2}
+ex(1,2)
+    out:1,2,3
+        ()
+        {}
+#参数的混合使用
+
+
+【对象】
+
+#多态：不限定对象是什么类型，都可以进行处理，不限于方法，运算符和函数都有多态性质
+如：1+2 out：3
+    ‘filsh’+‘license’ out:'Fishlicense'
+
+#创建类
+class Person():
+    def setName(self,name):
+        self.name = name
+    def getName(self):
+        return self.name
+    def greet(self):
+        print('hello %s' %self.name)
+
+e.g.
+foo = Person()
+foo.setName('song')
+foo.greet()
+    out:hello song
+
+#私有化：只能在类中使用，无法外部调用
+class Secretive:
+    def __inaccessible(self):
+        print('aaa')
+    def accessible(self):
+        print('bbb')
+        self.__inaccessible()
+
+s = Secretive()
+s.__inaccessible()
+    out:报错
+
+#检查继承
+issubclass(子类,父类)
+    out:True
+
+#检查实例
+isinstance(实例，类名)
+    out:True
+
+#构造方法（初始化__init__）
+class Bird():
+    def __init__(self):
+        self.hungry = True
+    def eat(self):
+        if self.hungry:
+            print('Aaah')
+        else:
+            print('NO,thx')
+
+b = Bird()
+b.hungry        #直接调用属性，不用括号
+    out:True
+b.eat()     #调用方法，需要括号
+    out:Aaah
+b.eat()
+    out:NO,thx
+
+class SongBird(Bird):
+    def __init__(self):
+        self.sound = 'Squawk'
+    def sing(self):
+        print(self.sound)
+
+sb = SongBird()
+sb.sing
+    out:Squawk
+sb.eat()
+    out:报错      #由于SongBird类在__init__初始化时没有hungry特性，可使用super函数解决，如下
+class SongBird(Bird):
+    def __init__(self):
+        super(SongBird, self).__init__()
+        self.sound = 'Squawk'
+
+#@property setter/getter
+可以把类中的方法，当做属性使用。
+
+import datetime, re
+
+DATE_PATTERN = re.compile('^\d+\-\d+\-\d+$')
+
+def str_to_date(date):
+    if isinstance(date, datetime.date):
+        return date
+    elif isinstance(date,str) and DATE_PATTERN.match(date):
+        return datetime.date(*map(int, date.split('-')))
+    raise TypeError
+
+
+class Person(object):
+    def __init__(self, name, birthday):
+        self.name = name
+        self.birthday = birthday
+
+    @property
+    def birthday(self):
+        return self._birthday
+
+    @birthday.setter
+    def birthday(self, birthday):
+        self._birthday = str_to_date(birthday)
+
+    @property
+    def age(self):
+        return datetime.date.today() - self.birthday
+
+
+    def __str__(self):
+        return '%s,%s(%s)'%(self.name,self.birthday, self.age)
+
+
+person = Person('Xiao Ming','1980-10-1')
+print(person)
+person.birthday = '1981-1-2'
+print(person)
+person.birthday = datetime.date(1979,12,12)
+print(person)
+person.birthday = '123456' # raise TypeError
+
+#生成器使用，yield
+参见http://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
+
+#包、模块
+当模块存在文件中时，包就是模块所在的目录。为了让python将其作为包对待，它必须包含一个命名为__inin__.py的文件。如果将它作为普通模块导入，文件的内容就是包的内容。
+简单包布局：
+~/python/drawing/   #包目录（drawing包）
+~/python/drawing/__init__.py    #包代码
+~/python/drawing/colors.py  #colors模块
+调用：
+import drawing  #表示__init__模块是可用的，但colors模块不可用
+import drawing.colors   #表示colors模块也可用了，但只能通过全名drawing.colors来使用
+from drawing import colors  #colors模块可用，可通过短名使用
+
