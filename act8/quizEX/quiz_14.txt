@@ -1,0 +1,308 @@
+Name:
+
+Data:
+
+Period:
+
+                    Num:14
+
+1,where is the RhodeIsland's capital ?
+A.BatonRouge
+B.Springfield
+C.Hartford
+D.Providence
+
+2,where is the WestVirginia's capital ?
+A.Indianapolis
+B.Austin
+C.Sacramento
+D.Charleston
+
+3,where is the NewMexico's capital ?
+A.Providence
+B.SantaFe
+C.Lincoln
+D.Bismarck
+
+4,where is the Colorado's capital ?
+A.Providence
+B.SaintPaul
+C.Denver
+D.Frankfort
+
+5,where is the Arizona's capital ?
+A.Cheyenne
+B.Phoenix
+C.Denver
+D.Salem
+
+6,where is the Oregon's capital ?
+A.OklahomaCity
+B.Trenton
+C.Salem
+D.LittleRock
+
+7,where is the Idaho's capital ?
+A.Denver
+B.DesMoines
+C.Boise
+D.Richmond
+
+8,where is the Montana's capital ?
+A.Augusta
+B.Helena
+C.JeffersonCity
+D.Lansing
+
+9,where is the Kentucky's capital ?
+A.Tallahassee
+B.Frankfort
+C.Honolulu
+D.SaltLakeCity
+
+10,where is the Pennsylvania's capital ?
+A.Lansing
+B.Columbia
+C.Albany
+D.Harrisburg
+
+11,where is the Wyoming's capital ?
+A.Honolulu
+B.Concord
+C.Cheyenne
+D.Atlanta
+
+12,where is the Missouri's capital ?
+A.Cheyenne
+B.JeffersonCity
+C.Columbus
+D.Montpelier
+
+13,where is the Washington's capital ?
+A.Olympia
+B.Austin
+C.Frankfort
+D.Helena
+
+14,where is the Connecticut's capital ?
+A.Hartford
+B.SaintPaul
+C.LittleRock
+D.Columbia
+
+15,where is the Florida's capital ?
+A.Tallahassee
+B.BatonRouge
+C.Boston
+D.Augusta
+
+16,where is the NorthDakota's capital ?
+A.Cheyenne
+B.Madison
+C.Hartford
+D.Bismarck
+
+17,where is the SouthCarolina's capital ?
+A.Columbia
+B.Honolulu
+C.Boston
+D.Richmond
+
+18,where is the Oklahoma's capital ?
+A.Concord
+B.Austin
+C.LittleRock
+D.OklahomaCity
+
+19,where is the Michigan's capital ?
+A.Lansing
+B.Columbus
+C.Salem
+D.Olympia
+
+20,where is the Georgia's capital ?
+A.Augusta
+B.Hartford
+C.CarsonCity
+D.Atlanta
+
+21,where is the California's capital ?
+A.Springfield
+B.Columbus
+C.Honolulu
+D.Sacramento
+
+22,where is the Mississippi's capital ?
+A.Hartford
+B.Jackson
+C.Tallahassee
+D.Sacramento
+
+23,where is the Alabama's capital ?
+A.Montgomery
+B.Juneau
+C.Olympia
+D.Concord
+
+24,where is the Maryland's capital ?
+A.Tallahassee
+B.Springfield
+C.Helena
+D.Annapolis
+
+25,where is the NorthCarolina's capital ?
+A.Raleigh
+B.Juneau
+C.Lansing
+D.Columbus
+
+26,where is the Ohio's capital ?
+A.Indianapolis
+B.Columbus
+C.Juneau
+D.Lansing
+
+27,where is the Wisconsin's capital ?
+A.Madison
+B.Montgomery
+C.DesMoines
+D.Columbia
+
+28,where is the Hawaii's capital ?
+A.Dover
+B.Olympia
+C.Honolulu
+D.Denver
+
+29,where is the NewJersey's capital ?
+A.JeffersonCity
+B.Tallahassee
+C.SantaFe
+D.Trenton
+
+30,where is the Arkansas's capital ?
+A.Jackson
+B.Cheyenne
+C.LittleRock
+D.Charleston
+
+31,where is the Minnesota's capital ?
+A.Charleston
+B.SaintPaul
+C.Dover
+D.Jackson
+
+32,where is the Illinois's capital ?
+A.Frankfort
+B.Boston
+C.Austin
+D.Springfield
+
+33,where is the SouthDakota's capital ?
+A.SaltLakeCity
+B.Trenton
+C.Pierre
+D.Columbia
+
+34,where is the Virginia's capital ?
+A.SaintPaul
+B.Richmond
+C.Bismarck
+D.Springfield
+
+35,where is the Alaska's capital ?
+A.Hartford
+B.Tallahassee
+C.Juneau
+D.Helena
+
+36,where is the Kansas's capital ?
+A.SaltLakeCity
+B.Albany
+C.Sacramento
+D.Topeka
+
+37,where is the Louisiana's capital ?
+A.JeffersonCity
+B.Bismarck
+C.Charleston
+D.BatonRouge
+
+38,where is the Indiana's capital ?
+A.BatonRouge
+B.Columbia
+C.Lansing
+D.Indianapolis
+
+39,where is the Delaware's capital ?
+A.Dover
+B.Annapolis
+C.Atlanta
+D.Topeka
+
+40,where is the Vermont's capital ?
+A.Cheyenne
+B.Springfield
+C.Montpelier
+D.Bismarck
+
+41,where is the Texas's capital ?
+A.Helena
+B.Jackson
+C.Albany
+D.Austin
+
+42,where is the Nevada's capital ?
+A.CarsonCity
+B.Salem
+C.Bismarck
+D.Raleigh
+
+43,where is the Massachusetts's capital ?
+A.Denver
+B.Springfield
+C.JeffersonCity
+D.Boston
+
+44,where is the Utah's capital ?
+A.JeffersonCity
+B.Pierre
+C.Albany
+D.SaltLakeCity
+
+45,where is the Iowa's capital ?
+A.Olympia
+B.Hartford
+C.Jackson
+D.DesMoines
+
+46,where is the NewYork's capital ?
+A.Cheyenne
+B.Lincoln
+C.Denver
+D.Albany
+
+47,where is the NewHampshire's capital ?
+A.Juneau
+B.Concord
+C.SaltLakeCity
+D.Helena
+
+48,where is the Maine's capital ?
+A.Augusta
+B.Annapolis
+C.Columbia
+D.Hartford
+
+49,where is the Nebraska's capital ?
+A.Harrisburg
+B.Lincoln
+C.Austin
+D.DesMoines
+
+50,where is the Tennessee's capital ?
+A.Sacramento
+B.Olympia
+C.Nashville
+D.Boise
+
