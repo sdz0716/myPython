@@ -1790,3 +1790,6 @@ import drawing  #表示__init__模块是可用的，但colors模块不可用
 import drawing.colors   #表示colors模块也可用了，但只能通过全名drawing.colors来使用
 from drawing import colors  #colors模块可用，可通过短名使用
 
+
+【图形界面编辑GUI】
+PyQt 或 Tkinter 支持3.0
