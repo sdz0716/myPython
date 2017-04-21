@@ -1,0 +1,21 @@
+0   'id'
+1  '航班号'
+2   '日期'
+3   '始发地三字码'
+4   '目的地三字码'
+5   '始发机场'
+6   '目的机场'
+7   '始发城市'
+8   '目的城市'
+9   '飞机号'
+10  'ATD'
+11  'ATA'
+12  '前一班ATA'
+13  '下一班ATD'
+14  '航前心跳'
+15  '航后心跳'
+16  '航后开关机'
+17  '心跳前重启时间' / 'heartbeat before SystemInit' / 'heartbeat and No SystemInit' / 'No heartbeat but systemInit interval time %s seconds' / 'No heartbeat and No systemInit'
+
+
+[{"ts":1452239230329,"status":0},{"ts":1452239326957,"status":1},{"ts":1452240618230,"status":0},{"ts":1452240713355,"status":1}]']

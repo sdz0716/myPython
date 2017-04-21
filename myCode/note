@@ -1,11 +1,19 @@
 问题？如何循环print输出只显示最新输出的行
 
+#字符串转为元组，返回：(1, 2, 3)
+print tuple(eval("(1,2,3)"))
+#字符串转为列表，返回：[1, 2, 3]
+print list(eval("(1,2,3)"))
+#字符串转为字典，返回：<type 'dict'>
+print type(eval("{'name':'ljq', 'age':24}"))
 
 bytearray(b'test_central_1').decode()        #bytearray,即字节数组转换为str
     out:test_central_1
 
 datetime.datetime.now().strftime('%y%m%d%H%M%S')        #将当前时间按照要求格式化
     out:20161206174715
+#时间戳间隔
+datetime.datetime.fromtimestamp(timestamp1) -datetime.datetime.fromtimestamp(timestamp2)
 
 linux下python3的mysql模块为mysql-connector
 linux下安装pip3，包名为python34u-pip（python3.4版本），需要ius源
@@ -83,9 +91,9 @@ ip = 192.168.1.1
 port = 8080
 
 
-import ConfigParer
+import configparer
 conf = ConfigParser.ConfigParser()
-conf.read("c:\\test.conf")
+conf.read("c:\\test.conf")      #需要单独read
 
 # 获取指定的section， 指定的option的值
 name = conf.get("section1", "name")
@@ -113,7 +121,7 @@ conf.set("new_section", "new_option", "http://www.cnblogs.com/tankxiao")
 conf.write(open("c:\\test.conf","w"))
 
 
-【ACT4】
+【ACT4】--列表
 L[1]
 L[0]
 L[-1]
