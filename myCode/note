@@ -1,25 +1,27 @@
 问题？如何循环print输出只显示最新输出的行
 
-#字符串转为元组，返回：(1, 2, 3)
+##字符串、数组、字典转换##
+【字符串转为元组，返回：(1, 2, 3)】
 print tuple(eval("(1,2,3)"))
-#字符串转为列表，返回：[1, 2, 3]
+【字符串转为列表，返回：[1, 2, 3]】
 print list(eval("(1,2,3)"))
-#字符串转为字典，返回：<type 'dict'>
+【字符串转为字典，返回：<type 'dict'>】
 print type(eval("{'name':'ljq', 'age':24}"))
 
-bytearray(b'test_central_1').decode()        #bytearray,即字节数组转换为str
+
+##编码、解码##
+【将字节数组（bytearray）转换为str，】
+bytearray(b'test_central_1').decode()
     out:test_central_1
 
-datetime.datetime.now().strftime('%y%m%d%H%M%S')        #将当前时间按照要求格式化
-    out:20161206174715
-#时间戳间隔
-datetime.datetime.fromtimestamp(timestamp1) -datetime.datetime.fromtimestamp(timestamp2)
+【中文乱码转码】
+request获取的内容有乱码，如‘<li>±¾Õ¾Êý¾Ý£ºÌì½òÊÐÌì½òÊÐ  µçÐÅ</li>’
+res.text.encode('latin1').decode('gbk')
+
+
 
 linux下python3的mysql模块为mysql-connector
 linux下安装pip3，包名为python34u-pip（python3.4版本），需要ius源
-
-request获取的内容有乱码，如‘<li>±¾Õ¾Êý¾Ý£ºÌì½òÊÐÌì½òÊÐ  µçÐÅ</li>’
-res.text.encode('latin1').decode('gbk')     #中文乱码转码
 
 sys.path.append()       #导入非sys.path下的自定义模块方法，先添加该模块所在目录后，再import
 
@@ -190,7 +192,7 @@ copy.copy() & copy.deepcopy()
     l3: [1, 2, 3, ['a', 'b']]
 
 
-【ACT5】
+【【ACT5】】--字典
 dict = {'a': 'A', 'b': 'B'}
 #用例：
 dict.pop('a')
@@ -203,16 +205,23 @@ if 'a' in dict:
 dict.values()
 dict.keys()
     dict_keys(['b', 'a'])
+
+【以列表返回可遍历的(键, 值) 元组数组。】
 dict.items()
     dict_items([('b', 'B'), ('a', 'A')])
 for k,y in dict.items():
     print(key,v)
     output:b,B
            a,A
+
+【返回指定键的值，如果值不在字典中返回default值】
+dict.get(key, default=None)
 dict.get('a',0)
     'A'
 dict.get('1',0)
     0
+
+【和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default】
 dict.setdefault(key, default=None)      #如果键不已经存在于字典中，将会添加键并将值设为默认值
     >>> a={}
     >>> a['key']='123'
@@ -1029,18 +1038,22 @@ Out[8]:
 '{"mice": 0, "name": "zop", "felineiq": null, "iscat": true}'
 
 
-【ACT15】-保持时间、计划任务和启动程序
+【【ACT15】】-保持时间、计划任务和启动程序
 
-#time
+##time模块##
 
-time.time()     #获得当前时间戳
-一种剖析代码执行速度的方式为，代码开始和结束时分别执行time.time()获得两个时间戳，相减即可，如
+【获得当前时间戳】
+time.time()
+
+【剖析代码执行速度】
+代码开始和结束时分别执行time.time()获得两个时间戳，相减即可，如
 starttime = time.time()
 def（）
 endtime = time.time()
 starttime - endtime
 
-time.sleep()        #暂停N秒
+【暂停N秒】
+time.sleep()
 由于idle中ctrl+c无法在sleep期间中断，所以如要sleep(30)秒，应该for循环30次sleep(1)
 
 round(数值，传入小数点后几位、默认为到整数位)      #四舍五入
@@ -1051,7 +1064,7 @@ round(time.time(), 2)
 Out[15]:
 1484893763.71
 
-#datatime模块
+##datatime模块##
 
 datetime.datetime.now()
 Out[17]:
@@ -1064,17 +1077,17 @@ dt.year,dt.month,dt.day
 dt.hour,dt.minute,dt.second
     Out[22]: (15, 17, 57)
 
-#处理时间戳
+【处理时间戳】
 datetime.datetime.fromtimestamp(1000000)
     out:datetime.datetime(1970, 1, 12, 21, 46, 40)
 datetime.datetime.fromtimestamp(time.time())
     out:datetime.datetime(2017, 1, 20, 15, 40, 17, 976057)
 
-#datetime对象比较大小
+【datetime对象比较大小】
 datetime.datetime(2017, 1, 20, 15, 40, 17, 976057) > datetime.datetime(1970, 1, 12, 21, 46, 40)
     out:True
 
-#timedelta数据类型，表示一段时间
+【timedelta数据类型，表示一段时间】
 delta = datetime.timedelta(days=11, hours=10, minutes=9, seconds=8)
 delta.days, delta.seconds, delta.microseconds       #没有.minute，.hours属性，这里的.seconds表示的10小时9分8秒
     Out[27]: (11, 36548, 0)
@@ -1083,7 +1096,7 @@ delta.total_seconds()       #11天10小时9分8秒的总秒数
 str(delta)      #可字符串化为易读格式
     Out[29]: '11 days, 10:09:08'
 
-timedelta可以进行算数运算
+【timedelta可以进行算数运算】
 dt = datetime.datetime.now()
 dt
     out:datetime.datetime(2017, 1, 22, 0, 41, 46, 303519)
@@ -1093,13 +1106,12 @@ dt + thousandDays
 dt + thousandDays * 2       #还可以进行乘法
     out:datetime.datetime(2022, 7, 15, 0, 41, 46, 303519)
 
-#暂停直至特定日期
-
+【暂停直至特定日期】
 future = datetime.datetime(2016,10,31,0,0,0)
 while datetime.datetime.now() < future:
     time.sleep(1)
 
-#datetime对象转换为字符串
+【datetime对象转换为字符串】
 strftime()指令
 %Y  带世纪的年份，如2014
 %y  不是世纪的年份，00~99，如2014的14
@@ -1118,19 +1130,28 @@ strftime()指令
 %p  AM或PM
 %%  就是%字符
 
+
 oct21st = datetime.datetime(2015,10,21,16,29,0)
 oct21st.strftime('%Y/%m/%d %H:%M:%S')
     out:'2015/10/21 16:29:00'
 oct21st.strftime('%Y/%m/%d of %H:%M:%S')        #可加字符串
     '2015/10/21 of 16:29:00'
 
-#字符串转为datetime对象
+【将当前时间按照要求格式化】
+datetime.datetime.now().strftime('%y%m%d%H%M%S')        #
+    out:20161206174715
+
+【字符串转为datetime对象】
 strptime()      #p表示parse，解析
 datetime.datetime.strptime('2015/10/21 16:29:00', '%Y/%m/%d %H:%M:%S')      #第一个参数为str格式的时间，第二个参数为该定制格式的字符串
     out:datetime.datetime(2015,10,21,16,29)
 datetime.datetime.strptime('2015/10/21 of 16:29:00', '%Y/%m/%d of %H:%M:%S')
     out:datetime.datetime(2015, 10, 21, 16, 29)
 
+【时间戳间隔】
+dd = datetime.datetime.fromtimestamp(timestamp1) -datetime.datetime.fromtimestamp(timestamp2)
+dd.seconds
+    out:秒为单位的时间间隔
 
 #多线程
 见实例threadingDemo.py

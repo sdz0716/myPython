@@ -38,7 +38,7 @@ with sshtunnel.SSHTunnelForwarder(
 
 url = 'url'
 value = {'name': 'loginAccount', 'password': 'password', 'autologin': '1', 'enter': 'Sign in', 'request': ''}
-data = urllib.parse.urlencode(value).encode('utf-8')
+data = urllib.parse.urlencode(value, safe='@').encode('utf-8')  #safe参数为指定内容不转译
 cj = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
 # opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0')]
