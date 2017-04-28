@@ -1,5 +1,30 @@
 问题？如何循环print输出只显示最新输出的行
 
+##邮件##
+【发送附件】
+import smtplib
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+message = ''
+msg = MIMEMultipart('related')
+att = MIMEText(open('/home/zabbixgraph/%s.zip' % datedir, 'rb').read(), 'base64', 'utf-8')
+att["Content-Type"] = 'application/octet-stream'
+att["Content-Disposition"] = 'attachment; filename="%s.zip"' % datedir
+msg.attach(att)
+
+msg['Subject'] = 'Zabbix Daily Report - PRODUCT - %s' % datedir
+msg['From'] = 'opts_qa@fairlinkcentury.com'
+strTo = ['daize.song@fairlinkcentury.com' ,'bin.yao@fairlinkcentury.com']
+#strTo = ['daize.song@fairlinkcentury.com']
+msg['To'] = ','.join(strTo)
+
+smtp = smtplib.SMTP_SSL('smtp.exmail.qq.com', 465)
+smtp.login('opts_qa@fairlinkcentury.com', 'S8d6DElM')
+smtp.sendmail(msg['From'], strTo, msg.as_string())
+smtp.quit()
+
 ##字符串、数组、字典转换##
 【字符串转为元组，返回：(1, 2, 3)】
 print tuple(eval("(1,2,3)"))
@@ -496,10 +521,22 @@ exampleZip.extract('a.txt', 'C:\\A')        #解压包内文件a.txt至C:\A目�
     out:'C:\\A\\a.txt'
 exampleZip.close()
 
+##创建和添加到zip文件
 import zipfile      #创建和添加到zip文件
 newZip = zipfile.ZipFile('new.zip', 'w')        #如已有new.zip，则w会擦除原有文件
 newZip = zipfile.ZipFile('new.zip', 'a')        #如已有new.zip，则a会添加新内容到原有文件
-newZip.write('a.txt', compress_type=zipfile.ZIP_DEFAULTED)
+newZip.write('a.txt', compress_type=zipfile.ZIP_DEFLATED)
+newZip.close()
+
+【压缩文件夹】
+fileLst = []
+for root, dirs, files in os.walk('/home/zabbixgraph/%s' % datedir):
+    for name in files:
+        fileLst.append(name)
+newZip = zipfile.ZipFile('/home/zabbixgraph/%s.zip' % datedir, 'w', zipfile.ZIP_DEFLATED)
+for tar in fileLst:
+#    newZip.write('/home/zabbixgraph/%s/%s' % (datedir, tar))   #压缩文件为/home/zabbixgraph/datedir/tar
+    newZip.write('/home/zabbixgraph/%s/%s' % (datedir, tar), '%s/%s' % (datedir, tar))  #此写法表示压缩文件内的目录结构，此为datedir/tar
 newZip.close()
 
 
