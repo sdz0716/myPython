@@ -267,6 +267,14 @@ print(pprint.pformat(dict))
           'WI': {'Adams': {'pop': 20875, 'tracts': 7},
                 'Ashland': {'pop': 16157, 'tracts': 7}}}
 
+【字典合并】
+def f7(d1, d2):
+    d = {}
+    d.update(d1)
+    d.update(d2)
+    return d
+将字典d1和d2合并到d
+
 
 【ACT6】
 l = 'Helloword'
@@ -1044,7 +1052,7 @@ for i in fileReader:
 #Reader对象只能循环遍历一次，再次读取需要重新调用csv.reader
 
 
-#CSV写入
+##CSV写入
 import csv
 outPut = open('C:\\Users\\daize\\Desktop\\pythontest\\Automate\\output.csv', 'w', newline='')       #windows下必须有newline=''参数，否则生成的excel默认双倍行距
 outPutWriter = csv.writer(outPut)
@@ -1056,7 +1064,7 @@ outPut = open('C:\\Users\\daize\\Desktop\\pythontest\\Automate\\output.tsv', 'w'
 outPutWriter = csv.writer(outPurt, delimiter='\t', lineterminator='\n\n')       #改分隔符为tab（默认为逗号），行终止符为2个回车（默认为1个回车）
 
 
-#JSON
+##JSON
 json不能存储python值，如file对象，csv reader、writer对象等。只能处理字符串，整型，浮点型，布尔型，列表，字典和NoneType。
 
 #用loads()函数读取json
@@ -1073,6 +1081,9 @@ pythonValue = {'felineiq': None, 'iscat': True, 'mice': 0, 'name': 'zop'}
 json.dumps(pythonValue)     #将python字典（或列表，int，float，str，布尔型或None）格式化为json格式
 Out[8]:
 '{"mice": 0, "name": "zop", "felineiq": null, "iscat": true}'
+
+【json.dumps中文转码】
+ json.dumps(data, ensure_ascii=False)，参数可使被转码为Unicode的中文保持原样。
 
 
 【【ACT15】】-保持时间、计划任务和启动程序
