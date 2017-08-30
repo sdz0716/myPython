@@ -16,3 +16,4 @@ def combineIntoDict(ip='1-ip.txt', name='1-name.txt'):
 
 if __name__ == '__main__':
     print(combineIntoDict('1-ip.txt', '1-name.txt'))
+
